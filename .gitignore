@@ -1,4 +1,9 @@
+### IntelliJ IDEA ###
+*.idea
+*.iws
 *.iml
+*.ipr
+
 .gradle
 /local.properties
 /.idea/caches
