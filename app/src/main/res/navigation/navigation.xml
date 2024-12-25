@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/addNames">
+    <fragment
+        android:id="@+id/addNames"
+        android:name="com.example.loteria.fragments.AddNames"
+        android:label="fragment_add_names"
+        tools:layout="@layout/fragment_add_names" >
+        <action
+            android:id="@+id/action_addNames_to_prices"
+            app:destination="@id/prices" />
+    </fragment>
+    <fragment
+        android:id="@+id/prices"
+        android:name="com.example.loteria.fragments.Prices"
+        android:label="fragment_prices"
+        tools:layout="@layout/fragment_prices" >
+        <action
+            android:id="@+id/action_prices_to_round"
+            app:destination="@id/round" />
+    </fragment>
+    <fragment
+        android:id="@+id/round"
+        android:name="com.example.loteria.fragments.Round"
+        android:label="fragment_round"
+        tools:layout="@layout/fragment_round" >
+        <action
+            android:id="@+id/action_round_to_endRound"
+            app:destination="@id/endRound" />
+    </fragment>
+    <fragment
+        android:id="@+id/endRound"
+        android:name="com.example.loteria.fragments.EndRound"
+        android:label="fragment_end_round"
+        tools:layout="@layout/fragment_end_round" >
+        <action
+            android:id="@+id/action_endRound_to_round"
+            app:destination="@id/round" />
+        <action
+            android:id="@+id/action_endRound_to_prizes"
+            app:destination="@id/prizes" />
+    </fragment>
+    <fragment
+        android:id="@+id/prizes"
+        android:name="com.example.loteria.fragments.Prizes"
+        android:label="fragment_prizes"
+        tools:layout="@layout/fragment_prizes" />
+</navigation>
