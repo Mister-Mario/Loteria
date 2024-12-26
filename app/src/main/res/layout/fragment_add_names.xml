@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:text="Nombre :"
+        android:text="Jugadores :"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/addName"
         app:layout_constraintEnd_toStartOf="@id/name"

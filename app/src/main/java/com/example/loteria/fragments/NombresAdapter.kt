@@ -12,7 +12,7 @@ import com.example.loteria.R
 
 class NombresAdapter(
     listaNombres: List<String>,
-    private val buttonText: String,
+    private val buttonText: String?,
     private val buttonClick: (name:String) -> Unit
 ): RecyclerView.Adapter<NombresAdapter.ViewHolder>() {
 
@@ -46,7 +46,7 @@ class NombresAdapter(
     class ViewHolder(
         private val view:View,
         private val nombresAdapter: NombresAdapter,
-        private val buttonText: String,
+        private val buttonText: String?,
         private val buttonClick: (name:String) -> Unit
     ):RecyclerView.ViewHolder(view){
         private val nombre = view.findViewById<TextView>(R.id.nombreItem)
@@ -59,10 +59,13 @@ class NombresAdapter(
 
         private fun setUpButton(){
             button.text = buttonText
-            button.setOnClickListener{
-                buttonClick(this.nombre.text.toString())
-                this.nombresAdapter.updateNombres(Game.getNames())
-                this.view.invalidate()
+            buttonText?.let { buttonText ->
+                button.visibility = View.VISIBLE
+                button.setOnClickListener{
+                    buttonClick(this.nombre.text.toString())
+                    this.nombresAdapter.updateNombres(Game.getNames())
+                    this.view.invalidate()
+                }
             }
         }
     }

@@ -28,8 +28,12 @@ class Round : Fragment() {
         binding.recyclerNamesRound.layoutManager = GridLayoutManager(requireContext(), 2)
 
         binding.recyclerNamesRound.adapter = NombresAdapter(Game.getNames(), "Ganador"){
-            name : String -> Game.setGanador(playingLinea, name)
-            this@Round.nextRound()
+            name : String -> Game.addGanador(name)
+        }
+
+        binding.btnNext.setOnClickListener{
+            Game.setGanador(playingLinea)
+            nextRound()
         }
 
 
@@ -40,6 +44,7 @@ class Round : Fragment() {
         if (this@Round.playingLinea){
             this@Round.playingLinea = false
             this@Round.binding.txtRound.text = "Jugando Bingo"
+            Game.clearGanadores()
         }
         else
             findNavController().navigate(RoundDirections.actionRoundToEndRound())

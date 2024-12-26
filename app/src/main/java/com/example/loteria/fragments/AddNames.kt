@@ -44,8 +44,13 @@ class AddNames : Fragment() {
         }
 
         binding.startGame.setOnClickListener{
-            Game.startGame()
-            findNavController().navigate(AddNamesDirections.actionAddNamesToPrices())
+            if(Game.getNames().size < 2){
+                Toast.makeText(context, "Añada al menos 2 jugadores", Toast.LENGTH_LONG).show()
+            }
+            else{
+                Game.startGame()
+                findNavController().navigate(AddNamesDirections.actionAddNamesToPrices())
+            }
         }
 
 

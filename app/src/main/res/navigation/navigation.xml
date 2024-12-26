@@ -47,5 +47,9 @@
         android:id="@+id/prizes"
         android:name="com.example.loteria.fragments.Prizes"
         android:label="fragment_prizes"
-        tools:layout="@layout/fragment_prizes" />
+        tools:layout="@layout/fragment_prizes" >
+        <action
+            android:id="@+id/action_prizes_to_addNames"
+            app:destination="@id/addNames" />
+    </fragment>
 </navigation>
