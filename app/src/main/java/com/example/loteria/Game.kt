@@ -5,6 +5,9 @@ class Game {
         private val names : MutableList<String> = mutableListOf()
         private lateinit var money : List<MutableList<Int>>
 
+        private var lineaPrice : Double = 0.0
+        private var bingoPrice : Double = 0.0
+
         fun addName(name:String){
             names.add(name)
         }
@@ -21,6 +24,16 @@ class Game {
 
         fun deleteName(name:String){
             names.remove(name)
+        }
+
+        fun setLineaPrice(price:Double){
+            if (price >= 0)
+                this.lineaPrice = price
+        }
+
+        fun setBingoPrice(price:Double){
+            if (price >= 0)
+                this.bingoPrice = price
         }
     }
 }
