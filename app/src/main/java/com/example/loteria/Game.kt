@@ -3,7 +3,7 @@ package com.example.loteria
 class Game {
     companion object{
         private val names : MutableList<String> = mutableListOf()
-        private lateinit var money : List<MutableList<Int>>
+        private lateinit var money : List<MutableList<Double>>
 
         private var lineaPrice : Double = 0.0
         private var bingoPrice : Double = 0.0
@@ -14,7 +14,7 @@ class Game {
 
         fun startGame(){
             money = List(names.size){
-                index: Int -> MutableList(names.size){index: Int -> 0 }
+                index: Int -> MutableList(names.size){index: Int -> 0.0 }
             }
         }
 
@@ -34,6 +34,25 @@ class Game {
         fun setBingoPrice(price:Double){
             if (price >= 0)
                 this.bingoPrice = price
+        }
+
+        fun setGanador(playingLinea: Boolean, name: String) {
+            if (playingLinea)
+                setGanador(lineaPrice, name)
+            else
+                setGanador(bingoPrice, name)
+        }
+
+        private fun setGanador(price: Double, name: String){
+            val i = names.indexOf(name)
+            for (j in money.indices){
+                if(i != j)
+                    money[i][j] += price
+            }
+        }
+
+        fun getMoney() : List<List<Double>>{
+            return money
         }
     }
 }
